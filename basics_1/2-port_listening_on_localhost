@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# 2-port_listening_on_localhost: localhost-un 98 portunu dinləyir
+
+echo "Starting my script."
+
+# Dinləmə
+sudo nc -l -p 98 -s 127.0.0.2
