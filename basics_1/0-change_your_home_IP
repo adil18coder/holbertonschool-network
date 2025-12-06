@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script changes the resolution of localhost and facebook.com
 
 # Backup the current /etc/hosts file
