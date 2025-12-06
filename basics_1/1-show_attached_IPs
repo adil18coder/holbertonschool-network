@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
-# 1-show_attached_IPs: display all active IPv4 addresses without ip/ifconfig
+# 1-show_attached_IPs: sistemdə aktiv olan bütün IPv4 ünvanlarını göstərir
 
-# Read IPv4 addresses from /proc/net/fib_trie
-grep -oP '32 host ((\d{1,3}\.){3}\d{1,3})' /proc/net/fib_trie | awk '{print $3}'
+# Əgər ifconfig komandası mövcuddursa
+if command -v ifconfig >/dev/null 2>&1; then
+    # IPv4 ünvanlarını çıxarır
+    ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
+else
+    # Əgər ifconfig yoxdursa, xəta mesajı göstərir
+    echo "Xəta: ifconfig tapılmadı" >&2
+    exit 1
+fi
